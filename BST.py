@@ -21,12 +21,13 @@ class Node:
     def drawNode(self, x, y, px, py, canvas):
         if px!=-1: #if there is a parent
             canvas.create_line(px, py, x, y)
-        canvas.create_oval(x-15, y-15, x+15, y+15, fill="white")
-        canvas.create_text(x, y, text=str(self.data))
         if self.left:
             self.left.drawNode(x-50, y+50, x, y, canvas)
         if self.right:
             self.right.drawNode(x+50, y+50, x, y, canvas)
+        canvas.create_oval(x - 15, y - 15, x + 15, y + 15, fill="white")
+        canvas.create_text(x, y, text=str(self.data))
+
 
     def preorder(self):
         # Preorder traversal: root -> left -> right
@@ -59,11 +60,6 @@ class Node:
             return self.left.search(target) #recursive call
         else:
             return self.right.search(target) #search in the right subtree
-
-    def drawNode(self,x,y, px, py, canvas):
-        #px, py are parent coordinates
-        pass #placeholder
-        #handle the edge case, where py, px are None
 class BinarySearchTree:
     def __init__(self):
         self.root = None
