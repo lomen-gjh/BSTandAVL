@@ -20,13 +20,13 @@ class Node:
 
     def drawNode(self, x, y, px, py, canvas):
         if px!=-1: #if there is a parent
-            canvas.create_line(px, py, x, y)
-        if self.left:
+            canvas.create_line(px, py, x, y) #draw line from parent to child
+        if self.left: #check if left child exists
             self.left.drawNode(x-50, y+50, x, y, canvas)
-        if self.right:
+        if self.right: #check if right child exists
             self.right.drawNode(x+50, y+50, x, y, canvas)
-        canvas.create_oval(x - 15, y - 15, x + 15, y + 15, fill="white")
-        canvas.create_text(x, y, text=str(self.data))
+        canvas.create_oval(x - 15, y - 15, x + 15, y + 15, fill="white") #draw the node after the children and lines
+        canvas.create_text(x, y, text=str(self.data)) #draw the text in the node
 
 
     def preorder(self):
@@ -60,6 +60,16 @@ class Node:
             return self.left.search(target) #recursive call
         else:
             return self.right.search(target) #search in the right subtree
+
+    def findMinParent(self, parent):
+        pass #placeholder
+
+    def findMaxParent(self, parent):
+        pass #placeholder
+
+    def delete(self, target, parent):
+        # Delete a node with the given target value
+        pass #placeholder
 class BinarySearchTree:
     def __init__(self):
         self.root = None
