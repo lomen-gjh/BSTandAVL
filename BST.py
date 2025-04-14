@@ -18,6 +18,16 @@ class Node:
             else:
                 self.right.insert(value) #recursive call
 
+    def drawNode(self, x, y, px, py, canvas):
+        if px!=-1: #if there is a parent
+            canvas.create_line(px, py, x, y)
+        canvas.create_oval(x-15, y-15, x+15, y+15, fill="white")
+        canvas.create_text(x, y, text=str(self.data))
+        if self.left:
+            self.left.drawNode(x-50, y+50, x, y, canvas)
+        if self.right:
+            self.right.drawNode(x+50, y+50, x, y, canvas)
+
     def preorder(self):
         # Preorder traversal: root -> left -> right
         print(self.data, end=" ") #print the root
@@ -82,6 +92,7 @@ class BinarySearchTree:
 
     def drawTree(self, startx, starty, canvas):
         if self.root:
-            self.root.drawNode(startx, starty, None, None, canvas) # to be completed
+            canvas.delete("all") # delete previous tree
+            self.root.drawNode(startx, starty, -1, -1, canvas) # to be completed
         else:
             print("BST is empty.")
