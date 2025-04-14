@@ -102,3 +102,11 @@ class BinarySearchTree:
             self.root.drawNode(startx, starty, -1, -1, canvas) # to be completed
         else:
             print("BST is empty.")
+
+    def delete(self, target):
+        if self.root:
+            #edge case: root is a target
+            #else, delete a node
+            pass
+        else:
+            print("BST is empty.")
